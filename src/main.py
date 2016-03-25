@@ -1,5 +1,7 @@
 #! /usr/bin/env python
 
+import sys
+
 operators = { '!': (lambda x : not (x[0].eval()))
             , '=>' : (lambda x : x[1].eval() or not x[0].eval())
             , '<=>' : (lambda x : x[0].eval() == x[1].eval())
@@ -21,7 +23,7 @@ class Node:
         if type(self.value) == type(True): # Boolean value as expected
             return self.value
         else:
-            print 'Error: cannot evaluate expression'
+            print('Error: cannot evaluate expression')
             return False
 
     def reduce(self):
@@ -56,13 +58,13 @@ def parse(sons = [], op = [False]):
 
 
 def main():
-    truths.extend(raw_input().strip().split(' '))
+    truths.extend(sys.stdin.readline().strip().split(' '))
 
     for truth in truths:
         if truth in operators.keys():
             return 'Error: operator detected in truths'
 
-    tree = parse(op = raw_input().strip().split(' '))
+    tree = parse(op = sys.stdin.readline().strip().split(' '))
     return tree.eval()
 
-print main()
+print(main())
