@@ -1,14 +1,14 @@
 #! /usr/bin/env python
 
 operators = { '!': (lambda x : not (x[0].eval()))
-            , '=>' : (lambda x : x[0].eval() or not x[1].eval())
+            , '=>' : (lambda x : x[1].eval() or not x[0].eval())
             , '<=>' : (lambda x : x[0].eval() == x[1].eval())
             , '&' : (lambda x : x[0].eval() and x[1].eval())
             , '|' : (lambda x : x[0].eval() or x[1].eval())}
 
 # a node is composed of a value and sons (if it is a parent node)
 
-truths = []
+truths = ['True', 'true']
 
 class Node:
 
@@ -56,13 +56,13 @@ def parse(sons = [], op = [False]):
 
 
 def main():
-    truths = raw_input().strip().split(' ')
+    truths.extend(raw_input().strip().split(' '))
 
     for truth in truths:
         if truth in operators.keys():
             return 'Error: operator detected in truths'
 
-    res = parse(op = raw_input().strip().split(' ')).eval()
-    return res
+    tree = parse(op = raw_input().strip().split(' '))
+    return tree.eval()
 
 print main()
