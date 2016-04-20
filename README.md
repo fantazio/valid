@@ -5,12 +5,12 @@ Give it some truths, a result to verify and it tells you if it's true or not
 
 ## Examples
 
-`A B
-A & B`
+    A B
+    A & B
 evaluates to true
 
-`A B
-A & B => C | ! A`
+    A B
+    A & B => C | ! A
 evaluates to false
 
 
