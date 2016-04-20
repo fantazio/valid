@@ -14,6 +14,6 @@ A & B => C | ! A`
 evaluates to false
 
 
-## Contributiotn
+## Contribution
 
 None needed. It is just a way for me to use python
